@@ -1,0 +1,16 @@
+%html
+  %head
+    %script(src="/leaflet.js")
+    %link(rel="stylesheet"  href="/leaflet.css")
+    :css
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+  %body
+    #map
+    :javascript
+      var map = new L.Map('map');
+      var layer = new L.TileLayer('http://tile-server-world-codeformuenster.gigantic.io/tiles/3/{x}/{y}/{z}.png')
+      map.addLayer(layer).setView(new L.LatLng(38, -95), 1);
+

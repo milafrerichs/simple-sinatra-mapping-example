@@ -1,0 +1,30 @@
+%html
+  %head
+    %script(src="http://openlayers.org/en/v3.3.0/build/ol.js")
+    %link(rel="stylesheet"  href="http://openlayers.org/en/v3.3.0/css/ol.css")
+    :css
+      #map {
+        width: 100%;
+        height: 100%;
+      }
+  %body
+    #map
+    :javascript
+      #{
+        "var server = 'http://tile-server-world-codeformuenster.gigantic.io/tiles/#{@n}/{x}/{y}/{z}.png'"
+      }
+      var layers = [
+        new ol.layer.Tile({
+          source: new ol.source.XYZ({
+          url: server,
+          })
+        })
+      ];
+      var map = new ol.Map({
+        layers: layers,
+        target: 'map',
+        view: new ol.View({
+          center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:4326'),
+          zoom: 4
+        })
+      });
